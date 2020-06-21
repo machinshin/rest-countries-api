@@ -1,29 +1,29 @@
-import { Component, OnInit } from "@angular/core";
-import { ApiService } from "src/app/services/api.service";
-import { Country } from "src/app/types/api";
+import { Component, OnInit } from '@angular/core'
+import { ApiService } from 'src/app/services/api.service'
+import { Country } from 'src/app/types/api'
 
-const REGION_OPTIONS = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
+const REGION_OPTIONS = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.scss"]
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  private source: Country[];
-  searchFilter?: string;
-  regionFilter?: string;
-  regionOptions = REGION_OPTIONS;
+  private source: Country[]
+  searchFilter?: string
+  regionFilter?: string
+  regionOptions = REGION_OPTIONS
 
-  constructor(private api: ApiService) {}
+  constructor (private api: ApiService) {}
 
-  ngOnInit(): void {
+  ngOnInit (): void {
     this.api.getAllCountries().subscribe(countries => {
-      this.source = countries;
-    });
+      this.source = countries
+    })
   }
 
-  get countries() {
+  get countries () {
     return this.source
       ? this.source
           .filter(country =>
@@ -38,6 +38,6 @@ export class HomeComponent implements OnInit {
               ? country.region.includes(this.regionFilter)
               : country
           )
-      : this.source;
+      : this.source
   }
 }

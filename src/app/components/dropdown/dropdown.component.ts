@@ -1,30 +1,30 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from '@angular/core'
 
 @Component({
-  selector: "app-dropdown",
-  templateUrl: "./dropdown.component.html",
-  styleUrls: ["./dropdown.component.scss"]
+  selector: 'app-dropdown',
+  templateUrl: './dropdown.component.html',
+  styleUrls: ['./dropdown.component.scss']
 })
 export class DropdownComponent {
-  showOptions = false;
+  showOptions = false
 
   @Input()
-  placeholder: string;
+  placeholder: string
 
   @Input()
-  values: string[];
+  values: string[]
 
   @Input()
-  value: string;
+  value: string
 
   @Output()
-  valueChange: EventEmitter<string> = new EventEmitter();
+  valueChange: EventEmitter<string> = new EventEmitter()
 
-  select(value: string) {
-    this.valueChange.emit(value);
+  select (value: string) {
+    this.valueChange.emit(value)
   }
 
-  toggleOptions() {
-    this.showOptions = !this.showOptions;
+  toggleOptions () {
+    this.showOptions = !this.showOptions
   }
 }

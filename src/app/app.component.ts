@@ -1,25 +1,25 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
-import { Observable } from "rxjs";
+import { Component, OnInit, ViewEncapsulation } from '@angular/core'
+import { Observable } from 'rxjs'
 
-import { ApiService } from "./services/api.service";
-import { ThemeService, Theme } from "./services/theme.service";
+import { ApiService } from './services/api.service'
+import { ThemeService, Theme } from './services/theme.service'
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
-  theme: Observable<Theme>;
+  theme: Observable<Theme>
 
-  constructor(
+  constructor (
     private apiService: ApiService,
     private themeService: ThemeService
   ) {}
 
-  ngOnInit() {
+  ngOnInit () {
     // this.apiService.getAllCountries().subscribe((res) => console.log(res));
-    this.theme = this.themeService.mode$;
+    this.theme = this.themeService.mode$
   }
 }
